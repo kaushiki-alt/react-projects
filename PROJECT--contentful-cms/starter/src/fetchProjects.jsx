@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 const client = createClient({
   space: 'c2xym81dxotz',
   environment: 'master', // defaults to 'master' if not set
-  accessToken: 'yFkY7xrbbwOPvUhjAuO0OrfD3BsMEA_uVJAZ--_TXiA',
+  accessToken: import.meta.env.VITE_API_KEY,
 });
 
 

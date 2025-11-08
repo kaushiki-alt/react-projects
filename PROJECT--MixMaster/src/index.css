@@ -285,3 +285,111 @@ PROJECT CSS
   margin: 0 auto;
   padding: 5rem 2rem;
 }
+
+.nav{
+  background-color: var(--white);
+}
+
+.nav-center{
+  max-width: var(--max-width);
+  width: var(--view-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 2rem;
+}
+
+.logo{
+  color: var(--primary-500);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  letter-spacing: 2px;
+}
+
+.navlinks{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.navlink{
+  color: var(--grey-900);
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  transition: var(--transition);
+  letter-spacing: 1px;
+}
+
+.navlink:hover{
+  color: var(--primary-500);
+}
+
+.active{
+  color: var(--primary-500);
+}
+
+
+.about-center p{
+  color: var(--grey-500);
+  line-height: 2;
+  margin-top: 2rem;
+}
+
+#error{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 1rem;
+}
+
+#error img{
+width: 90vw;  
+max-width: 600px;
+display: block;
+margin-bottom: 2rem;
+}
+
+#error p{
+  line-height: 2;
+  color: var(--grey-500);
+}
+
+#error a {
+    color: var(--primary-500);
+    text-transform: capitalize;
+  }
+  
+  #cocktail-list{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 1.5rem;
+  }
+
+  #cocktail-card{
+    width: var(--fixed-width);
+    background-color: black;
+  }
+
+  .img{
+    width: 250px;
+    height: 200px;
+  }
+
+
+@media (min-width:768px) {
+  .nav-center{
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navlinks{
+    flex-direction: row;
+        align-items: center;
+        margin-top: 0;
+
+  }
+}

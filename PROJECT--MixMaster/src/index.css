@@ -10,7 +10,9 @@
 
 html {
   font-size: 100%;
-} /*16px*/
+}
+
+/*16px*/
 
 :root {
   /* colors */
@@ -72,9 +74,11 @@ body {
   line-height: 1;
   color: var(--textColor);
 }
+
 p {
   margin: 0;
 }
+
 h1,
 h2,
 h3,
@@ -89,23 +93,28 @@ h5 {
 }
 
 h1 {
-  font-size: clamp(2rem, 5vw, 5rem); /* Large heading */
+  font-size: clamp(2rem, 5vw, 5rem);
+  /* Large heading */
 }
 
 h2 {
-  font-size: clamp(1.5rem, 3vw, 3rem); /* Medium heading */
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  /* Medium heading */
 }
 
 h3 {
-  font-size: clamp(1.25rem, 2.5vw, 2.5rem); /* Small heading */
+  font-size: clamp(1.25rem, 2.5vw, 2.5rem);
+  /* Small heading */
 }
 
 h4 {
-  font-size: clamp(1rem, 2vw, 2rem); /* Extra small heading */
+  font-size: clamp(1rem, 2vw, 2rem);
+  /* Extra small heading */
 }
 
 h5 {
-  font-size: clamp(0.875rem, 1.5vw, 1.5rem); /* Tiny heading */
+  font-size: clamp(0.875rem, 1.5vw, 1.5rem);
+  /* Tiny heading */
 }
 
 /* BIGGER FONTS */
@@ -143,6 +152,7 @@ small,
 a {
   text-decoration: none;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
@@ -153,6 +163,7 @@ ul {
   display: block;
   object-fit: cover;
 }
+
 /* buttons */
 
 .btn {
@@ -168,18 +179,22 @@ ul {
   text-transform: capitalize;
   display: inline-block;
 }
+
 .btn:hover {
   background: var(--primary-700);
   box-shadow: var(--shadow-3);
 }
+
 .btn-hipster {
   color: var(--primary-500);
   background: var(--primary-200);
 }
+
 .btn-hipster:hover {
   color: var(--primary-200);
   background: var(--primary-700);
 }
+
 .btn-block {
   width: 100%;
 }
@@ -196,10 +211,12 @@ ul {
   color: var(--red-dark);
   background: var(--red-light);
 }
+
 .alert-success {
   color: var(--green-dark);
   background: var(--green-light);
 }
+
 /* form */
 
 .form {
@@ -211,6 +228,7 @@ ul {
   padding: 2rem 2.5rem;
   margin: 3rem auto;
 }
+
 .form-label {
   display: block;
   font-size: var(--small-text);
@@ -218,6 +236,7 @@ ul {
   text-transform: capitalize;
   letter-spacing: var(--letterSpacing);
 }
+
 .form-input,
 .form-textarea {
   width: 100%;
@@ -234,15 +253,18 @@ ul {
 .form-textarea {
   height: 7rem;
 }
+
 ::placeholder {
   font-family: inherit;
   color: var(--grey-400);
 }
+
 .form-alert {
   color: var(--red-dark);
   letter-spacing: var(--letterSpacing);
   text-transform: capitalize;
 }
+
 /* alert */
 
 @keyframes spinner {
@@ -286,11 +308,11 @@ PROJECT CSS
   padding: 5rem 2rem;
 }
 
-.nav{
+.nav {
   background-color: var(--white);
 }
 
-.nav-center{
+.nav-center {
   max-width: var(--max-width);
   width: var(--view-width);
   margin: 0 auto;
@@ -299,43 +321,43 @@ PROJECT CSS
   padding: 1.5rem 2rem;
 }
 
-.logo{
+.logo {
   color: var(--primary-500);
   font-weight: 700;
   font-size: clamp(1.5rem, 3vw, 3rem);
   letter-spacing: 2px;
 }
 
-.navlinks{
+.navlinks {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   margin-top: 1rem;
 }
 
-.navlink{
+.navlink {
   color: var(--grey-900);
   padding: 0.5rem 0.5rem 0.5rem 0;
   transition: var(--transition);
   letter-spacing: 1px;
 }
 
-.navlink:hover{
+.navlink:hover {
   color: var(--primary-500);
 }
 
-.active{
+.active {
   color: var(--primary-500);
 }
 
 
-.about-center p{
+.about-center p {
   color: var(--grey-500);
   line-height: 2;
   margin-top: 2rem;
 }
 
-#error{
+#error {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -345,51 +367,161 @@ PROJECT CSS
   gap: 1rem;
 }
 
-#error img{
-width: 90vw;  
-max-width: 600px;
-display: block;
-margin-bottom: 2rem;
+#error img {
+  width: 90vw;
+  max-width: 600px;
+  display: block;
+  margin-bottom: 2rem;
 }
 
-#error p{
+#error p {
   line-height: 2;
   color: var(--grey-500);
 }
 
 #error a {
-    color: var(--primary-500);
-    text-transform: capitalize;
-  }
-  
-  #cocktail-list{
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    gap: 1.5rem;
+  color: var(--primary-500);
+  text-transform: capitalize;
+}
+
+.cocktail-list {
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.cocktail-card {
+  background-color: white;
+  box-shadow: var(--shadow-2);
+  border-radius: var(--borderRadius);
+  transition: var(--transition);
+}
+
+.cocktail-card:hover {
+  box-shadow: var(--shadow-4);
+}
+
+.cocktail-card .img {
+  height: 15rem;
+  border-radius: var(--borderRadius) var(--borderRadius) 0 0;
+}
+
+.footer {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer h4 {
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.footer p {
+  color: var(--grey-500);
+  margin-bottom: 0.5rem;
+}
+
+footer .btn {
+  width: fit-content
+}
+
+.cocktail-details header{
+  text-align: center;
+ margin-bottom: 3rem;
+}
+
+header .btn{
+  font-size: var(--small-text);
+  box-shadow: var(--shadow-2);
+  margin-bottom: 1rem;
+}
+
+.drink{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.drink .img{
+  border-radius: var(--borderRadius);
+}
+
+.drink-info{
+  padding-top: 2rem;
+}
+
+.drink-info .drink-data{
+  background-color: var(--primary-300);
+  color: var(--primary-700);
+  font-weight: 700;
+  padding: 0.3rem 0.5rem;
+  border-radius: var(--borderRadius);
+  margin-right: 0.5rem;
+  letter-spacing: var(--letterSpacing);
+}
+
+.drink-info  p{
+  font-weight: 700;
+  text-transform: capitalize;
+      line-height: 2;
+    margin-bottom: 1rem;
+}
+
+  .ing {
+    display: inline-block;
+    margin-right: 0.5rem;
   }
 
-  #cocktail-card{
-    width: var(--fixed-width);
-    background-color: black;
+  .newsletter-form{
+    width: 100%;
+    max-width: var(--fixed-width);
+    background-color: white;
+    box-shadow: var(--shadow-2);
+    padding: 2rem;
+    margin: auto;
   }
 
-  .img{
-    width: 250px;
-    height: 200px;
+  .form-row{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
+  input{
+    border: 1px solid var(--grey-200);
+    background-color: var(--backgroundColor);
+    padding:.375rem .75rem;
+    border-radius: var(--borderRadius);
+
+  }
 
 @media (min-width:768px) {
-  .nav-center{
+  .nav-center {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
   }
 
-  .navlinks{
+  .navlinks {
     flex-direction: row;
-        align-items: center;
-        margin-top: 0;
+    align-items: center;
+    margin-top: 0;
 
   }
+
 }
+
+  @media (min-width: 992px) {
+    .drink {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .drink-info {
+      padding-top: 0;
+    }
+  }

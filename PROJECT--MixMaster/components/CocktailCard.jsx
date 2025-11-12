@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const CocktailCard = ({ drink }) => {
     const { idDrink: id, strDrink: name, strGlass: glass, strDrinkThumb: image, strAlcoholic: info } = drink;
     return (
-        <section id='cocktail-card'>
+        <section className='cocktail-card'>
             <div className="img-container">
                 <img src={image} alt={name} className='img' />
             </div>

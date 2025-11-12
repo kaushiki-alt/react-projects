@@ -8,7 +8,8 @@ const CocktailList = ({ drinks }) => {
         );
     }
     return (
-        <div id='cocktail-list'>
+        
+        <div className='cocktail-list'>
             {drinks.map((drink) => {
                 return (
                     <CocktailCard key={drink.idDrink} drink={drink} />

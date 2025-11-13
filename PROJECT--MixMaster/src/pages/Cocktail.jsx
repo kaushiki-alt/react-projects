@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios'
 import React from 'react'
 import { Link, useLoaderData } from 'react-router-dom'
@@ -5,20 +6,34 @@ import { Link, useLoaderData } from 'react-router-dom'
 const singleCocktailUrl =
   'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
 
-export const loader = async ({ params }) => {
-  const { id } = params
-  const response = await axios.get(`${singleCocktailUrl}${id}`)
-  return { response }
+const singleCocktailQuery = (id) => {
+  return {
+    queryKey: ['drink', id],
+    queryFn: async () => {
+      const { data } = await axios.get(`${singleCocktailUrl}${id}`)
+      return data;
+    }
+  }
 }
 
-const Cocktail = () => {
-  const { response } = useLoaderData();
 
-  if (!response) {
-    <h2>Data not found....</h2>
+export const loader = (queryClient) =>
+  async ({ params }) => {
+    const { id } = params;
+    await queryClient.ensureQueryData(singleCocktailQuery(id))
+    return {id}
   }
 
-  const singleDrink = response.data.drinks[0];
+
+const Cocktail = () => {
+  const { id } = useLoaderData();
+  const { data } = useQuery(singleCocktailQuery(id));
+  if (!data) {
+    <h2>Data not found....</h2>
+  }
+  console.log(data);
+  
+  const singleDrink = data.drinks[0];
   const {
     strDrink: name,
     strDrinkThumb: image,
@@ -28,9 +43,9 @@ const Cocktail = () => {
     strInstructions: instructions,
   } = singleDrink;
 
-const validIng = Object.keys(singleDrink).filter((key) => key.startsWith('strIngredient') && singleDrink[key] !== null).map((key) => singleDrink[key]);
+  const validIng = Object.keys(singleDrink).filter((key) => key.startsWith('strIngredient') && singleDrink[key] !== null).map((key) => singleDrink[key]);
 
-console.log(validIng);
+  console.log(validIng);
 
 
 
@@ -59,8 +74,8 @@ console.log(validIng);
           </p>
           <p>
             <span className='drink-data'>Ingredients :</span> {validIng.map((item, index) => {
-              return(
-                <span className='ing' key={item}>{item} {index <validIng.length -1?',': ''}</span>
+              return (
+                <span className='ing' key={item}>{item} {index < validIng.length - 1 ? ',' : ''}</span>
               )
             })}
           </p>

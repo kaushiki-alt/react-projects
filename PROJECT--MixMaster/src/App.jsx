@@ -3,18 +3,25 @@ import { About, Cocktail, Error, HomeLayout, Landing, Newsletter, SinglePageErro
 import { loader as landingLoader } from './pages/Landing';
 import { loader as cocktailLoader } from './pages/Cocktail';
 import { action as newsletterAction } from './pages/Newsletter';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5,
+    }
+  }
+});
 const router = createBrowserRouter([
   {
     path: '/',
     element: <HomeLayout />,
-    errorElement:<Error/>,
+    errorElement: <Error />,
     children: [
       {
         index: true,
-        loader: landingLoader,
-        errorElement: <SinglePageError/>,
+        loader: landingLoader(queryClient),
+        errorElement: <SinglePageError />,
         element: <Landing />,
       },
       {
@@ -24,8 +31,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'cocktail/:id',
-        errorElement: <SinglePageError/>,
-        loader: cocktailLoader,
+        errorElement: <SinglePageError />,
+        loader: cocktailLoader(queryClient),
         element: <Cocktail />,
       },
       {
@@ -37,8 +44,13 @@ const router = createBrowserRouter([
 ])
 
 const App = () => {
-  return <RouterProvider router={router} future={{
-    v7_startTransition: true,
-  }} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} future={{
+        v7_startTransition: true,
+      }} />
+    </QueryClientProvider>
+  )
 };
+
 export default App;

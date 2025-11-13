@@ -475,13 +475,18 @@ header .btn{
     margin-right: 0.5rem;
   }
 
-  .newsletter-form{
+  .newsletter-form, .search-form{
     width: 100%;
     max-width: var(--fixed-width);
     background-color: white;
     box-shadow: var(--shadow-2);
     padding: 2rem;
     margin: auto;
+  }
+
+  .search-form{
+    display: grid;
+    grid-template-columns: 1fr auto;
   }
 
   .form-row{

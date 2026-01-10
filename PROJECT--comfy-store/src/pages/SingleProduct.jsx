@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useLoaderData, useParams } from 'react-router-dom'
-import { customFetch, formatPrice } from '../utils'
+import { customFetch, formatPrice, generateAmountOptions } from '../utils/index.jsx'
 
 export const loader = async ({ params }) => {
   const response = await customFetch(`/products/${params.id}`);
@@ -38,28 +38,28 @@ const SingleProduct = () => {
       </div>
 
       {/* product info */}
-      <div className="">
+      <div className="mt-6 grid lg:grid-cols-2 gap-y-8 lg:gap-x-16">
         {/* image */}
-        <img src={image} alt={title} className='' />
+        <img src={image} alt={title} className='rounded-lg object-cover size-96 lg:w-full' />
 
         {/* info */}
-        <div className="">
-          <h1 className="">
+        <div className='flex flex-col gap-2'>
+          <h1 className="font-bold text-3xl capitalize">
             {title}
           </h1>
 
-          <h4 className="">
+          <h4 className="font-bold text-xl capitalize">
             {company}
           </h4>
 
-          <p className="">{formattedPrice}</p>
+          <p className="text-xl mt-1">{formattedPrice}</p>
 
-          <p className="">{description}</p>
+          <p className="mt-4 leading-8">{description}</p>
 
           {/* colors */}
-          <div className="">
-            <h4 className="">colors</h4>
-            <div className="">
+          <div className="mt-4">
+            <h4 className="capitalize font-medium text-md tracking-wider">colors</h4>
+            <div className="mt-2 ">
               {colors.map((color) => {
                 return (
                   <button type='button' key={color}
@@ -73,23 +73,20 @@ const SingleProduct = () => {
           </div>
 
           {/* amount */}
-          <div className="form-control">
+          <div className="form-control mt-2 flex flex-col gap-2 w-full max-w-xs">
             <label className="label">
-              <h4 className="">
+              <h4 className="text-md font-medium tracking-wider capitalize text-neutral-content">
                 Amount
               </h4>
             </label>
 
-            <select className="select select-secondary" value={amount} onChange={handleAmount}>
-              <option value={1}>1</option>
-              <option value={2}>2</option>
-              <option value={3}>3</option>
-            </select>
+            <select className="select select-secondary select-lg" value={amount} onChange={handleAmount}>
+{generateAmountOptions(20)}            </select>
           </div>
 
-          {/* cart button */}
-          <div className="">
-            <button className='btn btn-secondary' onClick={() => console.log("added to the cart")}> Add to bag</button>
+          {/* bag button */}
+          <div className="mt-10">
+            <button className='btn btn-secondary btn-lg font-medium uppercase text-sm' onClick={() => console.log("added to the cart")}> Add to bag</button>
           </div>
         </div>
       </div>

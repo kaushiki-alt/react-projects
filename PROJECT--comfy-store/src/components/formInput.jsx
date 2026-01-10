@@ -1,12 +1,17 @@
 import React from 'react'
 
-const FormInput = ({ label, name, type, defaultValue }) => {
+const FormInput = ({ size, label, name, type, defaultValue }) => {
   return (
-<fieldset className="fieldset">
-  <legend className="fieldset-legend capitalize">{label}</legend>
-  <input type={type} name={name} className="input" defaultValue={defaultValue}/>
-</fieldset>  
-
-);
+    <div className='form-control'>
+      <label htmlFor={name} className='label'>
+        <span className='capitalize '>{label}</span>
+      </label>      <input
+        type={type}
+        name={name}
+        defaultValue={defaultValue}
+        className={`input ${size}`}
+      />
+    </div>
+  );
 };
 export default FormInput;

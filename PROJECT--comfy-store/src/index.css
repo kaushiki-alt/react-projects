@@ -13,4 +13,9 @@
   .basic{
     @apply h-screen grid place-items-center;
   }
+
+  .form-control{
+    @apply flex flex-col gap-1;
+  }
+
 }

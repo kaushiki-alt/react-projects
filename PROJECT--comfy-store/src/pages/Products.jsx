@@ -11,6 +11,7 @@ export const loader = async ({ request }) => {
   const response = await customFetch(url, {params: searchParams,})
   const products = response.data.data
   const metaInfo = response.data.meta  
+  
   return { products, metaInfo, searchParams }
 }
 

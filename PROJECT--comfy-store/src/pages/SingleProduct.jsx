@@ -1,33 +1,47 @@
 import React, { useState } from 'react'
 import { Link, useLoaderData, useParams } from 'react-router-dom'
 import { customFetch, formatPrice, generateAmountOptions } from '../utils/index.jsx'
+import { useDispatch } from 'react-redux';
+import { addItem } from '../features/cart/cartSlice.js';
 
 export const loader = async ({ params }) => {
   const response = await customFetch(`/products/${params.id}`);
   return { product: response.data.data }
 }
 
-
 const SingleProduct = () => {
-
   const { product } = useLoaderData()
-  console.log(product.attributes);
 
-  
+  const dispatch = useDispatch();
+
   const handleAmount = (e) => {
     setAmount(parseInt(e.target.value));
   }
-  
+
+
   const { image, title, price, description, colors, company } =
-  product.attributes;
-  
+    product.attributes;
+
   const formattedPrice = formatPrice(price)
-  
+
   // states
   const [amount, setAmount] = useState(1)
   const [productColor, setProductColor] = useState(colors[0])
 
+  const cartProduct = {
+    cartID: product.id + productColor,
+    productId: product.id,
+    image,
+    title,
+    price,
+    productColor,
+    company,
+    amount
+  }
 
+  const addToCart = () => {
+    dispatch(addItem({ product: cartProduct }))
+  }
   return (
     <section>
       <div className="breadcrumbs text-md">
@@ -74,19 +88,19 @@ const SingleProduct = () => {
 
           {/* amount */}
           <div className="form-control mt-2 flex flex-col gap-2 w-full max-w-xs">
-            <label className="label">
+            <label className="label" htmlFor='amount'>
               <h4 className="text-md font-medium tracking-wider capitalize text-neutral-content">
                 Amount
               </h4>
             </label>
 
-            <select className="select select-secondary select-lg" value={amount} onChange={handleAmount}>
-{generateAmountOptions(20)}            </select>
+            <select className="select select-secondary select-lg" name="amount" value={amount} onChange={handleAmount}>
+              {generateAmountOptions(20)}            </select>
           </div>
 
           {/* bag button */}
           <div className="mt-10">
-            <button className='btn btn-secondary btn-lg font-medium uppercase text-sm' onClick={() => console.log("added to the cart")}> Add to bag</button>
+            <button className='btn btn-secondary btn-lg font-medium uppercase text-sm' onClick={addToCart}> Add to bag</button>
           </div>
         </div>
       </div>

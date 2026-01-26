@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { formatPrice } from '../utils'
 
 const FormRange = ({ label, name, size, min, max, step, defaultValue }) => {
-    const [selectedRange, setSelectedRange] = useState(max)
+    const [selectedRange, setSelectedRange] = useState(() => Number(defaultValue ?? max))
+
+    useEffect(() => {
+        setSelectedRange(Number(defaultValue ?? max))
+    }, [defaultValue, max])
     return (
         <div className="form-control">
             <label htmlFor={name} className={`w-[95%] sm:w-full flex justify-between gap-0 px-2 mt-2 label cursor-pointer`}>
@@ -16,8 +20,7 @@ const FormRange = ({ label, name, size, min, max, step, defaultValue }) => {
                 value={selectedRange}
                 step={step}
                 className={`range range-primary ${size}`}
-                defaultValue={defaultValue}
-                onChange={(e) => setSelectedRange(e.target.value)} />
+                onChange={(e) => setSelectedRange(Number(e.target.value))} />
 
             <div className="w-[95%] sm:w-full flex justify-between text-xs px-2 mt-2">
                 <span className="font-bold text-md">0</span>

@@ -7,10 +7,10 @@ import FormCheckbox from './FormCheckbox';
 
 const Filters = () => {
   const { metaInfo, searchParams } = useLoaderData();
-  console.log(searchParams);
    const { product, company, categories, shipping, order, price } = searchParams;
 
-  
+  const maxPrice = 100000;
+  const step = 1000;
   return (
     <Form
       className='bg-base-200 rounded-md px-8 py-4 grid gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center'>
@@ -49,7 +49,7 @@ const Filters = () => {
         name="price"
         size="range-sm"
         defaultValue={price}
-        min={0} max="100000" step="1000" />
+        min={0} max={maxPrice} step={step} />
 
       <FormCheckbox
         name="shipping"

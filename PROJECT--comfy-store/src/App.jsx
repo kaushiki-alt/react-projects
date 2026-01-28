@@ -1,11 +1,14 @@
 import React from "react"
 import { HomeLayout, About, Cart, Orders, Checkout, Products, Error, Register, Login, Landing, SingleProduct, ErrorElement } from "./pages"
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import {store} from './store'
 
 // loaders
 import { loader as loadingLoader } from "./pages/Landing";
 import { loader as SingleProductLoader } from "./pages/SingleProduct";
 import { loader as ProductLoader } from "./pages/Products";
+import { action as RegisterAction } from "./pages/Register";
+import { action as LoginAction } from "./pages/Login";
 const router = createBrowserRouter([
   {
     path: '/',
@@ -52,11 +55,13 @@ const router = createBrowserRouter([
   path: '/login',
   element:<Login/>,
   errorElement: <Error/>,
+  action: LoginAction(store),
   },
   {
   path: '/register',
   element:<Register/>,
   errorElement: <Error/>,
+  action: RegisterAction,
   },
   
 ])

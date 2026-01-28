@@ -3,10 +3,11 @@ import CartTotals from '../components/cartTotals'
 import SectionTitle from '../components/SectionTitle'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import CartItemsList from '../components/CartItemsList'
+import CartItemsList from '../components/cartItemsList';
 
 const Cart = () => {
-  const user = "kaushiki";
+    const user = useSelector((state) => state.userState.user)
+  
   const numOfItemsInCart = useSelector((state) => state.cartState.numItemsInCart)
   if (numOfItemsInCart === 0) {
     return (

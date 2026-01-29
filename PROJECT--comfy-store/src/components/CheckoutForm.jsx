@@ -1,5 +1,5 @@
 import React from 'react'
-import { data, Form, redirect } from 'react-router-dom'
+import { Form, redirect } from 'react-router-dom'
 import FormInput from './formInput'
 import { SubmitButton } from '.'
 import { customFetch, formatPrice } from '../utils'
@@ -31,7 +31,7 @@ export const action = (store) => async ({ request }) => {
             }
         )
         console.log(response);
-        
+
         store.dispatch(clearCart());
         toast.success('order placed successfully');
         return redirect('/orders');

@@ -4,8 +4,17 @@ import { customFetch, formatPrice, generateAmountOptions } from '../utils/index.
 import { useDispatch } from 'react-redux';
 import { addItem } from '../features/cart/cartSlice.js';
 
-export const loader = async ({ params }) => {
-  const response = await customFetch(`/products/${params.id}`);
+const SingleProductQuery = (id) => {
+  return {
+  queryKey: ['singleProduct', id],
+  queryFn: () => customFetch(`/products/${id}`),
+}
+}
+
+export const loader = (queryClient) => async ({ params }) => {
+  const response = await queryClient.ensureQueryData(
+    SingleProductQuery(params.id)
+  )
   return { product: response.data.data }
 }
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { useLoaderData, useLocation, useNavigate } from 'react-router-dom'
 
 const PaginationContainer = () => {
-  const { metaInfo, } = useLoaderData();
+  const { metaInfo } = useLoaderData();
   const { page, pageCount } = metaInfo.pagination;
   const pages = Array.from({ length: pageCount }, (_, i) => { return i + 1 });
 

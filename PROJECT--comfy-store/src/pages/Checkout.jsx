@@ -1,6 +1,6 @@
 import React from 'react'
 import CheckoutForm from '../components/CheckoutForm'
-import CartTotals from '../components/cartTotals'
+import CartTotals from '../components/CartTotals'
 import SectionTitle from '../components/SectionTitle'
 import { useSelector } from 'react-redux'
 

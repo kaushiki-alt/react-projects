@@ -1,5 +1,5 @@
 import React from 'react'
-import CartTotals from '../components/cartTotals'
+import CartTotals from '../components/CartTotals'
 import SectionTitle from '../components/SectionTitle'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'

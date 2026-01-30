@@ -3,8 +3,7 @@ import CartTotals from '../components/cartTotals'
 import SectionTitle from '../components/SectionTitle'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import CartItemsList from '../components/cartItemsList';
-
+import { CartItemsList } from '../components'
 const Cart = () => {
     const user = useSelector((state) => state.userState.user)
   

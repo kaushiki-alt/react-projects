@@ -91,7 +91,6 @@ function App() {
       <RouterProvider router={router} future={{
         v7_startTransition: true,
       }} />
-      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
 
   )

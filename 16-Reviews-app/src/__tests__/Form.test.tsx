@@ -3,7 +3,7 @@ import Form from "../components/Form";
 import userEvent from "@testing-library/user-event";
 
 // helper function
-const getFormElements = () => {
+export const getFormElements = () => {
     const emailInput = screen.getByRole('textbox', { name: /email/i });
     const ratingSelect = screen.getByRole('combobox', { name: /rating/i });
     const textArea = screen.getByRole('textbox', { name: /your review/i });
@@ -14,7 +14,7 @@ const getFormElements = () => {
     }
 }
 
-describe('Form Tests', () => {
+describe('Testing Form Component', () => {
     const mockOnSubmit = vi.fn();
 
     beforeEach(() => {

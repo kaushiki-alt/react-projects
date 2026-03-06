@@ -8,7 +8,6 @@ import Image from 'next/image'
 
 const Sidebar = () => {
   const pathname = usePathname()
-  console.log(pathname);
   
   return (
     <aside className='py-4 px-8 bg-muted h-full'>

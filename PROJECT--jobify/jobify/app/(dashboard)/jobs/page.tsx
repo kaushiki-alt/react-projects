@@ -1,11 +1,25 @@
-import React from 'react'
+import JobList from "@/components/JobList";
+import SearchForm from "@/components/SearchForm";
+import { getAllJobsAction } from "@/utils/actions";
+import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query"
 
-const page = () => {
+async function AllJobsPage() {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey:['jobs', '', 'all', 1],
+    queryFn : () => getAllJobsAction({}),
+  });
+
   return (
-    <div>
-      jobs
-    </div>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <SearchForm />
+      <div className="mt-8">
+      <JobList/>
+      </div>
+    </HydrationBoundary>
   )
 }
 
-export default page
+
+export default AllJobsPage;

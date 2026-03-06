@@ -1955,7 +1955,7 @@ export async function deleteJobAction(id: string): Promise<JobType | null> {
 
 2. **Define the DeleteJobBtn component**
 
-   - Define a function component named `DeleteJobBtn` that takes an object as a prop.
+   - Define a function component named `Delet eJobBtn` thattakes an object as a prop.
    - This object should have an `id` property of type string.
 
 3. **Use hooks to get necessary data and functions**
@@ -2821,7 +2821,7 @@ function StatsContainer() {
       <StatsCard title='pending jobs' value={data?.pending || 0} />
       <StatsCard title='interviews set' value={data?.interview || 0} />
       <StatsCard title='jobs declined' value={data?.declined || 0} />
-    </div>
+    </div> 
   );
 }
 export default StatsContainer;
